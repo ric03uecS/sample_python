@@ -1,27 +1,61 @@
+# Language setting
 language: python
 
+# Version number
 python:
-  - 2.6
-
-#  - 2.7
-#  - 3.2
-#  - 3.3
-#  - 3.4
-#  - pypy
+  - 2.7
   
-install:
-  - pip install -r requirements.txt
+build:
+  pre_ci_boot:
+    image_name: drydock/u14nodall
+    image_tag: prod
+    pull: true
+    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
-# Make folders for the reports
-before_script:
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
+  ci:
+    - echo "Hello, World!"
+    - env
+    - echo $PATH
+    - reports --help
+    - python --version
+    - sleep 10
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - pip install -r requirements.txt
+    - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+    - which python && coverage run --branch test.py
+    - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+    - sudo docker --version
+    - sleep 10
+    - sudo docker ps -a
+    
+  push:
+    - echo "PUSH step done"
+    - ls -al
 
-script:
-  - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  - which python && coverage run --branch test.py
-  - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+  on_failure:
+    - echo "The job failed!!!!!"
+    
+  on_success:
+    - echo "The job succeeded!!!!"
 
-notifications:
-  email:
-   - exampleone@org.com
+
+#integrations:
+#  notifications:
+#    - integrationName: ric03uec-event
+#      type: webhook
+#      payload:
+#        - tag: testgin
+#      on_success: always
+#      on_failure: always
+#      on_pull_request: never
+#      on_start: never
+
+integrations:
+  notifications:
+    - integrationName: ric03uec-event
+      type: webhook
+      on_success: always
+      on_failure: always
+      on_pull_request: never
+      on_start: never
