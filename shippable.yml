@@ -53,7 +53,7 @@ build:
 
 integrations:
   notifications:
-    - integrationName: ric03uec-event
+    - integrationName: ric03uec-event1
       type: webhook
       on_success: always
       on_failure: always
