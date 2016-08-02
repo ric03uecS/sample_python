@@ -51,11 +51,11 @@ build:
 #      on_pull_request: never
 #      on_start: never
 
-integrations:
-  notifications:
-    - integrationName: ric03uec-event1
-      type: webhook
-      on_success: always
-      on_failure: always
-      on_pull_request: never
-      on_start: never
+#integrations:
+#  notifications:
+#    - integrationName: ric03uec-event1
+#      type: webhook
+#      on_success: always
+#      on_failure: always
+#      on_pull_request: never
+#      on_start: never
