@@ -4,6 +4,9 @@ language: python
 # Version number
 python:
   - 2.7
+  - 3.2
+  - 3.3
+  - 3.5
   
 build:
   pre_ci_boot:
