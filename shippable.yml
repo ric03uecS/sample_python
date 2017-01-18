@@ -9,6 +9,7 @@ python:
   - 3.5
   
 build:
+  cache: true
   pre_ci_boot:
     image_name: drydock/u14nodall
     image_tag: prod
