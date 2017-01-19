@@ -48,7 +48,6 @@ build:
   on_success:
     - echo "The job succeeded!!!!"
 
-
 #integrations:
 #  notifications:
 #    - integrationName: ric03uec-event
