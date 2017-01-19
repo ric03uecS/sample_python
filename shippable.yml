@@ -37,6 +37,7 @@ build:
     - sleep 10
     - sudo docker ps -a
     
+    
   push:
     - echo "PUSH step done"
     - ls -al
