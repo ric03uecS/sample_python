@@ -14,6 +14,10 @@ build:
   cache_dir_list:
     - $SHIPPABLE_BUILD_DIR/
     
+  pre_ci:
+    - echo "TEST FILE CONTENT NAMED FOO" > /tmp/foo
+    - cp -vr /tmp/foo /home/shippable/cexec/
+    
   pre_ci_boot:
     image_name: drydock/u14nodall
     image_tag: prod
@@ -22,6 +26,7 @@ build:
 
   ci:
     - echo "Hello, World!"
+    - cat /home/shippable/cexec/foo
     - env
     - echo $PATH
     - reports --help
