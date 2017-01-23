@@ -16,7 +16,7 @@ build:
     
   pre_ci:
     - echo "TEST FILE CONTENT NAMED FOO" > /tmp/foo
-    - cp -vr /tmp/foo /home/shippable/cexec/
+    - cp -vr /tmp/foo /tmp/cexec/
     
   pre_ci_boot:
     image_name: drydock/u14nodall
@@ -26,7 +26,7 @@ build:
 
   ci:
     - echo "Hello, World!"
-    - cat /home/shippable/cexec/foo
+    - cat /tmp/cexec/foo
     - env
     - echo $PATH
     - reports --help
