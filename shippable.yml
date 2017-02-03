@@ -22,6 +22,8 @@ build:
 
   ci:
     - echo "Hello, World!"
+    - cat $SHIPPABLE_BUILD_DIR/build_number || true
+    - echo $SHIPPABLE_BUILD_NUMBER > $SHIPPABLE_BUILD_DIR/build_number
     - env
     - echo $PATH
     - reports --help
