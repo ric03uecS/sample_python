@@ -39,7 +39,7 @@ build:
     - sudo docker --version
     - sleep 10
     - sudo docker ps -a
-    - $SHIPPABLE_BUILD_DIR/ttyTest.py
+    - python $SHIPPABLE_BUILD_DIR/ttyTest.py
     
   push:
     - echo "PUSH step done"
