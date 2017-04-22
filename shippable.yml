@@ -39,7 +39,7 @@ build:
     - sudo docker --version
     - sleep 10
     - sudo docker ps -a
-    - adsfjwekrljljasdfasf
+    - $SHIPPABLE_BUILD_DIR/test.py
     
   push:
     - echo "PUSH step done"
