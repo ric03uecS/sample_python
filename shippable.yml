@@ -61,6 +61,10 @@ integrations:
       on_failure: always
       on_pull_request: never
       on_start: never
+      
+  hub:
+    - integrationName: ric03uec-quay
+      type: quay.io
 
 #integrations:
 #  notifications:
