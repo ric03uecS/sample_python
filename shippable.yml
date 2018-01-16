@@ -11,9 +11,9 @@ python:
   
   
 build:
-  cache: true
-  cache_dir_list:
-    - $SHIPPABLE_BUILD_DIR/
+  #cache: true
+  #cache_dir_list:
+  #  - $SHIPPABLE_BUILD_DIR/
     
   pre_ci_boot:
     pull: true
